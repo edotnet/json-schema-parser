@@ -1,0 +1,1589 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/OutgoingAccountEvent"
+  },
+  "definitions": {
+    "OutgoingAccountEvent": {
+      "type": "object",
+      "properties": {
+        "event": {
+          "$ref": "#/definitions/AccountEventDetails"
+        },
+        "time": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "comment": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "originator": {
+          "$ref": "#/definitions/Company"
+        },
+        "outSourcerAccountId": {
+          "type": "string"
+        },
+        "accountRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "event",
+        "time",
+        "originator",
+        "outSourcerAccountId",
+        "accountRef"
+      ]
+    },
+    "Company": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "creditor"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "servicer": {
+              "type": "string"
+            }
+          }
+        }
+      ]
+    },
+    "AccountEventDetails": {
+      "type": "object",
+      "properties": {
+        "placedWithServicer": {
+          "$ref": "#/definitions/PlacedWithServerDetail"
+        },
+        "recalled": {
+          "$ref": "#/definitions/RecalledDetail"
+        },
+        "extendedFinalRecallDate": {
+          "$ref": "#/definitions/ExtendedFinalRecallDateDetail"
+        },
+        "appliedFinancialTransaction": {
+          "$ref": "#/definitions/AppliedFinancialTransactionDetail"
+        },
+        "settledInFull": {
+          "$ref": "#/definitions/SettledInFullDetail"
+        },
+        "grantedContactConsent": {
+          "$ref": "#/definitions/GrantedContactConsentDetail"
+        },
+        "revokedContactConsent": {
+          "$ref": "#/definitions/RevokedContactConsentDetail"
+        },
+        "phoneAdded": {
+          "$ref": "#/definitions/PhoneAddedDetail"
+        },
+        "phoneDetailsChanged": {
+          "$ref": "#/definitions/PhoneChangedDetail"
+        },
+        "phoneReportedBad": {
+          "$ref": "#/definitions/PhoneReportedBadDetail"
+        },
+        "phoneAttempted": {
+          "$ref": "#/definitions/PhoneAttemptedDetail"
+        },
+        "smsSent": {
+          "$ref": "#/definitions/SMSSentDetail"
+        },
+        "emailAdded": {
+          "$ref": "#/definitions/EmailAddedDetail"
+        },
+        "emailDetailsChanged": {
+          "$ref": "#/definitions/EmailChangedDetail"
+        },
+        "emailReportedBad": {
+          "$ref": "#/definitions/EmailReportedBadDetail"
+        },
+        "emailSent": {
+          "$ref": "#/definitions/EmailSentDetail"
+        },
+        "addressAdded": {
+          "$ref": "#/definitions/AddressAddedDetail"
+        },
+        "addressDetailsChanged": {
+          "$ref": "#/definitions/AddressChangedDetail"
+        },
+        "addressReportedBad": {
+          "$ref": "#/definitions/AddressReportedBadDetail"
+        },
+        "letterSent": {
+          "$ref": "#/definitions/LetterSentDetail"
+        },
+        "mailReturned": {
+          "$ref": "#/definitions/MailReturnedDetail"
+        },
+        "bankruptcyReported": {
+          "$ref": "#/definitions/BankruptcyReportedDetail"
+        },
+        "bankruptcyDetailsChanged": {
+          "$ref": "#/definitions/BankruptcyReportedDetail"
+        },
+        "bankruptcyDismissed": {
+          "$ref": "#/definitions/BankruptcyDismissedDetail"
+        },
+        "deceasedReported": {
+          "$ref": "#/definitions/DeceasedReportedDetail"
+        },
+        "notDeceasedReported": {
+          "$ref": "#/definitions/NotDeceasedReportedDetail"
+        },
+        "litigiousAccountHolderReported": {
+          "$ref": "#/definitions/LitigiousAccountHolderReportedDetail"
+        },
+        "notLitigiousAccountHolderReported": {
+          "$ref": "#/definitions/LitigiousAccountHolderReportedDetail"
+        },
+        "accountHolderHasAttorneyReported": {
+          "$ref": "#/definitions/AccountHolderHasAttorneyReportedDetail"
+        },
+        "accountHolderHasAttorneyDismissed": {
+          "$ref": "#/definitions/AccountHolderHasAttorneyDismissedDetail"
+        },
+        "militaryServiceChanged": {
+          "$ref": "#/definitions/MilitaryServiceChangedDetail"
+        },
+        "complaintFiled": {
+          "$ref": "#/definitions/ComplaintFiledDetail"
+        },
+        "complaintResolved": {
+          "$ref": "#/definitions/ComplaintResolvedDetail"
+        },
+        "ceaseAndDesistFiled": {
+          "$ref": "#/definitions/CeaseAndDesistFiledDetail"
+        },
+        "ceaseAndDesistDismissed": {
+          "$ref": "#/definitions/CeaseAndDesistDismissedDetail"
+        },
+        "fraudReported": {
+          "$ref": "#/definitions/FraudReportedDetail"
+        },
+        "fraudDismissed": {
+          "$ref": "#/definitions/FraudReportedDetail"
+        },
+        "disputed": {
+          "$ref": "#/definitions/DisputedDetail"
+        },
+        "disputeResolved": {
+          "$ref": "#/definitions/DisputedDetail"
+        },
+        "statuteOfLimitationsReached": {
+          "$ref": "#/definitions/StatuteOfLimitationsReachedDetail"
+        },
+        "statuteOfLimitationsDismissed": {
+          "$ref": "#/definitions/StatuteOfLimitationsDismissedDetail"
+        },
+        "accountHolderHasDebtManagementReported": {
+          "$ref": "#/definitions/AccountHolderHasDebtManagementReportedDetail"
+        },
+        "accountHolderDebtManagementDismissed": {
+          "$ref": "#/definitions/AccountHolderHasDebtManagementDismissedDetail"
+        },
+        "onPlacementHold": {
+          "$ref": "#/definitions/PlacementHoldDetails"
+        },
+        "placementHoldRemoved": {
+          "$ref": "#/definitions/PlacementHoldRemovedDetails"
+        },
+        "documentAttached": {
+          "$ref": "#/definitions/DocumentAttachedDetail"
+        },
+        "tagAdded": {
+          "$ref": "#/definitions/TagAddedDetail"
+        },
+        "tagRemoved": {
+          "$ref": "#/definitions/TagRemovedDetail"
+        },
+        "sif": {
+          "$ref": "#/definitions/SIFDetail"
+        },
+        "pif": {
+          "$ref": "#/definitions/PIFDetail"
+        },
+        "extendedPropertyCreated": {
+          "$ref": "#/definitions/ExtendedPropertyDetail",
+          "examples": [
+            {
+              "outSourcerAccountId": "003b556e-34d7-5c5e-994e-a1b6c3e8a53d",
+              "accountRef": "201810-10839",
+              "name": "Car",
+              "properties": {
+                "make": "Ford",
+                "model": "F150",
+                "year": "2020",
+                "Vin": "1234567891011123456765"
+              },
+              "schemaUri": "schema://custom/",
+              "lastUpdatedTime": "2020-03-28T21:40:48.233423Z",
+              "lastUpdatedUserId": "89fb5bf1-f5b9-4975-8fb3-e35828c15660",
+              "lastUpdatedCompanyId": "bbed5cf0-723f-4c0d-968b-cc26cc9cf867",
+              "isDeleted": false
+            }
+          ]
+        },
+        "extendedPropertyChanged": {
+          "$ref": "#/definitions/ExtendedPropertyDetail",
+          "examples": [
+            {
+              "outSourcerAccountId": "009c657b-2ed8-5392-889d-17d65642c3ff",
+              "accountRef": "201810-6387",
+              "name": "Car",
+              "properties": {
+                "make": "Ford",
+                "model": "F150",
+                "Year": "2020",
+                "Vin": "1234345567890"
+              },
+              "schemaUri": "schema://custom/",
+              "lastUpdatedTime": "2020-03-28T21:33:24.460946Z",
+              "lastUpdatedUserId": "89fb5bf1-f5b9-4975-8fb3-e35828c15660",
+              "lastUpdatedCompanyId": "bbed5cf0-723f-4c0d-968b-cc26cc9cf867",
+              "isDeleted": false
+            }
+          ]
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false
+    },
+    "PlacedWithServerDetail": {
+      "type": "object",
+      "properties": {
+        "servicerId": {
+          "type": "string"
+        },
+        "placementBatchId": {
+          "type": "string"
+        },
+        "placementNickname": {
+          "type": "string"
+        },
+        "placementTier": {
+          "type": "string"
+        },
+        "finalRecallDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "blanketSettlementPercent": {
+          "type": "number"
+        },
+        "commissionRate": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "servicerId",
+        "placementBatchId",
+        "placementNickname",
+        "finalRecallDate",
+        "blanketSettlementPercent",
+        "commissionRate"
+      ]
+    },
+    "RecalledDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "servicerId": {
+          "type": "string"
+        },
+        "placementBatchId": {
+          "type": "string"
+        },
+        "placementNickname": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "servicerId",
+        "placementBatchId",
+        "placementNickname"
+      ]
+    },
+    "ExtendedFinalRecallDateDetail": {
+      "type": "object",
+      "properties": {
+        "newDate": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "newDate"
+      ]
+    },
+    "AppliedFinancialTransactionDetail": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/FinancialTransactionType"
+        },
+        "transaction": {
+          "type": "string"
+        },
+        "transactionDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "relatedTransaction": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "amount": {
+          "$ref": "#/definitions/Amount"
+        },
+        "reportedCommission": {
+          "type": "number"
+        },
+        "outSourcerAccountHolderId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accountHolderRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "type",
+        "transaction",
+        "transactionDate",
+        "amount",
+        "reportedCommission"
+      ]
+    },
+    "FinancialTransactionType": {
+      "type": "string",
+      "enum": [
+        "payment",
+        "nsf",
+        "chargeback",
+        "creditorAdjustment",
+        "servicerCorrection"
+      ]
+    },
+    "Amount": {
+      "type": "object",
+      "properties": {
+        "principal": {
+          "type": "integer"
+        },
+        "interest": {
+          "type": "integer"
+        },
+        "fees": {
+          "type": "integer"
+        },
+        "costs": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "minProperties": 1
+    },
+    "SettledInFullDetail": {
+      "type": "object",
+      "properties": {
+        "preSettlementBalance": {
+          "$ref": "#/definitions/Balance"
+        },
+        "postSettlementBalance": {
+          "$ref": "#/definitions/Balance"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "preSettlementBalance",
+        "postSettlementBalance",
+        "date",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "Balance": {
+      "type": "object",
+      "properties": {
+        "principal": {
+          "type": "integer"
+        },
+        "interest": {
+          "type": "integer"
+        },
+        "fees": {
+          "type": "integer"
+        },
+        "costs": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "principal",
+        "interest",
+        "fees",
+        "costs"
+      ],
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "GrantedContactConsentDetail": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/ConsentMethod"
+        },
+        "type": {
+          "$ref": "#/definitions/ConsentType"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "ConsentMethod": {
+      "type": "object",
+      "properties": {
+        "call": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "sms": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "dialerUse": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "email": {
+          "type": "string"
+        }
+      }
+    },
+    "ConsentType": {
+      "type": "string",
+      "enum": [
+        "written",
+        "verbal"
+      ]
+    },
+    "PhoneNumber": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "extension": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "countryCode",
+        "number"
+      ]
+    },
+    "RevokedContactConsentDetail": {
+      "type": "object",
+      "properties": {
+        "method": {
+          "$ref": "#/definitions/ConsentMethod"
+        },
+        "type": {
+          "$ref": "#/definitions/ConsentType"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "method",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "PhoneAddedDetail": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AccountHolderUpdateSource": {
+      "oneOf": [
+        {
+          "type": "string",
+          "enum": [
+            "inHouse"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "fromVendor": {
+              "type": "string"
+            }
+          },
+          "minProperties": 1,
+          "maxProperties": 1,
+          "additionalProperties": false
+        }
+      ]
+    },
+    "PhoneChangedDetail": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "PhoneReportedBadDetail": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "PhoneAttemptedDetail": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "user": {
+          "type": "string"
+        },
+        "rightPartyContact": {
+          "type": "boolean"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "user",
+        "rightPartyContact",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "SMSSentDetail": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "content": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "content",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "EmailAddedDetail": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "EmailChangedDetail": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "EmailReportedBadDetail": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "EmailSentDetail": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "description",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AddressAddedDetail": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "street",
+        "city",
+        "state",
+        "postalCode",
+        "country"
+      ]
+    },
+    "AddressChangedDetail": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "type": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AddressReportedBadDetail": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "LetterSentDetail": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "$ref": "#/definitions/Address"
+        },
+        "code": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "address",
+        "code",
+        "description",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "MailReturnedDetail": {
+      "type": "object",
+      "properties": {
+        "returnType": {
+          "$ref": "#/definitions/MailReturnType"
+        },
+        "mailedToAddress": {
+          "$ref": "#/definitions/Address"
+        },
+        "forwardingAddress": {
+          "$ref": "#/definitions/Address"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "returnType",
+        "mailedToAddress",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "MailReturnType": {
+      "type": "string",
+      "enum": [
+        "undeliverable",
+        "forwarded"
+      ]
+    },
+    "BankruptcyReportedDetail": {
+      "type": "object",
+      "properties": {
+        "chapter": {
+          "$ref": "#/definitions/Chapter"
+        },
+        "caseNumber": {
+          "type": "string"
+        },
+        "districtCourt": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "attorney": {
+          "$ref": "#/definitions/Attorney"
+        },
+        "dateFiled": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "chapter",
+        "caseNumber",
+        "dateFiled",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "BankruptcyDismissedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "Chapter": {
+      "type": "string",
+      "enum": [
+        "chapter7",
+        "chapter11",
+        "chapter12",
+        "chapter13",
+        "chapter15"
+      ]
+    },
+    "Attorney": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "firm": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        }
+      },
+      "required": [
+        "name",
+        "phoneNumber"
+      ]
+    },
+    "DeceasedReportedDetail": {
+      "type": "object",
+      "properties": {
+        "caseNumber": {
+          "type": "string"
+        },
+        "dateOfDeath": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "dateOfBirth": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "caseNumber",
+        "dateOfDeath",
+        "city",
+        "state",
+        "postalCode",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "NotDeceasedReportedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "LitigiousAccountHolderReportedDetail": {
+      "type": "object",
+      "properties": {
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AccountHolderHasAttorneyReportedDetail": {
+      "type": "object",
+      "properties": {
+        "attorney": {
+          "$ref": "#/definitions/Attorney"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "attorney",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AccountHolderHasAttorneyDismissedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "MilitaryServiceChangedDetail": {
+      "type": "object",
+      "properties": {
+        "militaryBranch": {
+          "$ref": "#/definitions/MilitaryBranch"
+        },
+        "isActive": {
+          "type": "boolean"
+        },
+        "activeDutyStart": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "activeDutyEnd": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "militaryBranch",
+        "isActive",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "MilitaryBranch": {
+      "type": "string",
+      "enum": [
+        "army",
+        "navy",
+        "airForce",
+        "marines",
+        "coastGuard",
+        "homelandSecurity",
+        "nationalGuard"
+      ]
+    },
+    "ComplaintFiledDetail": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/ComplaintType"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "ComplaintResolvedDetail": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/ComplaintType"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "ComplaintType": {
+      "type": "string",
+      "enum": [
+        "written",
+        "verbal",
+        "bbb",
+        "fdcpa"
+      ]
+    },
+    "CeaseAndDesistFiledDetail": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "$ref": "#/definitions/CeaseAndDesistType"
+        },
+        "source": {
+          "$ref": "#/definitions/CeaseAndDesistSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "source",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "CeaseAndDesistDismissedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/CeaseAndDesistSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "CeaseAndDesistType": {
+      "type": "string",
+      "enum": [
+        "written",
+        "verbal",
+        "courtOrdered"
+      ]
+    },
+    "CeaseAndDesistSource": {
+      "type": "string",
+      "enum": [
+        "attorney",
+        "accountHolder",
+        "fromCreditor"
+      ]
+    },
+    "FraudReportedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "accountHolderRef": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "reason"
+      ]
+    },
+    "DisputedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "StatuteOfLimitationsReachedDetail": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "StatuteOfLimitationsDismissedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Reason"
+      ]
+    },
+    "TagAddedDetail": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        },
+        "value": {
+          "additionalProperties": true
+        }
+      },
+      "required": [
+        "key",
+        "value"
+      ]
+    },
+    "TagRemovedDetail": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "key"
+      ]
+    },
+    "AccountHolderHasDebtManagementReportedDetail": {
+      "type": "object",
+      "properties": {
+        "company": {
+          "type": "string"
+        },
+        "contactName": {
+          "type": "string"
+        },
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "comapny",
+        "contactName",
+        "phoneNumber",
+        "source",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "AccountHolderHasDebtManagementDismissedDetail": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/definitions/AccountHolderUpdateSource"
+        },
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "source",
+        "outSourcerAccountHolderId",
+        "accountHolderRef"
+      ]
+    },
+    "PlacementHoldDetails": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Reason"
+      ]
+    },
+    "PlacementHoldRemovedDetails": {
+      "type": "object",
+      "properties": {
+        "reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Reason"
+      ]
+    },
+    "DocumentAttachedDetail": {
+      "type": "object",
+      "properties": {
+        "documentType": {
+          "type": "string"
+        },
+        "documentPath": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "documentType",
+        "documentPath"
+      ]
+    },
+    "SIFDetail": {
+      "type": "object",
+      "properties": {
+        "preSettlementBalance": {
+          "type": "number"
+        },
+        "postSettlementBalance": {
+          "type": "number"
+        },
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "preSettlementBalance",
+        "postSettlementBalance",
+        "date"
+      ]
+    },
+    "PIFDetail": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "date"
+      ]
+    },
+    "ExtendedPropertyDetail": {
+      "type": "object",
+      "properties": {
+        "outSourcerAccountId": {
+          "type": "string"
+        },
+        "accountRef": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "properties": {},
+        "schemaUri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "lastUpdateTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "lastUpdatedUserId": {
+          "type": "string"
+        },
+        "lastUpdatedCompanyId": {
+          "type": "string"
+        },
+        "isDeleted": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

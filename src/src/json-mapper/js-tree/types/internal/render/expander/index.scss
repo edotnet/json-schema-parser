@@ -1,0 +1,47 @@
+$left-sizing: 15px;
+
+.expandable {
+  &.content {
+    padding-left: $left-sizing;
+  }
+
+  img {
+    padding-right: 9px;
+    width: 10px;
+  }
+}
+
+.node--title {
+  display: grid;
+  grid-template-columns: $left-sizing auto;
+  line-height: 30px;
+
+  &.yup {
+    cursor: pointer;
+  }
+
+  .title--text {
+    color: gray;
+  }
+
+  .type--text { 
+    color: gray;
+    font-style: italic;
+    text-transform: capitalize;
+  }
+
+  .js-tree-root > div > & span{
+    color: black;
+    font-weight: 500;
+    &.type--text { 
+      font-style: unset;
+      text-transform: capitalize;
+    }
+  }
+
+}
+
+
+.d-none {
+  display: none;
+}

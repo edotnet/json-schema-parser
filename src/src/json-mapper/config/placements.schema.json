@@ -1,0 +1,395 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "array",
+  "items": {
+    "$ref": "#/definitions/PlacementModel"
+  },
+  "definitions": {
+    "PlacementModel": {
+      "type": "object",
+      "properties": {
+        "outSourcerAccountId": {
+          "type": "string"
+        },
+        "placementBatchId": {
+          "type": "string"
+        },
+        "placementNickname": {
+          "type": "string"
+        },
+        "finalRecallDate": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "blanketSettlementPercent": {
+          "type": "number"
+        },
+        "commissionRate": {
+          "type": "number"
+        },
+        "account": {
+          "$ref": "#/definitions/PlacementAccountModel"
+        }
+      },
+      "required": [
+        "outSourcerAccountId",
+        "placementBatchId",
+        "placementNickname",
+        "finalRecallDate",
+        "blanketSettlementPercent",
+        "commissionRate",
+        "account"
+      ]
+    },
+    "PlacementAccountModel": {
+      "type": "object",
+      "properties": {
+        "outSourcerAccountId": {
+          "type": "string"
+        },
+        "accountRef": {
+          "type": "string"
+        },
+        "portfolioCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "branchCode": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "balance": {
+          "$ref": "#/definitions/Balance"
+        },
+        "lastPaymentDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "lastPaymentAmount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "lastChargeDate": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "format": "date-time"
+        },
+        "lastChargeAmount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "extendedProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountExtendedProperties"
+          }
+        },
+        "accountHolders": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/PlacementAccountHolderModel"
+          }
+        }
+      },
+      "required": [
+        "outSourcerAccountId",
+        "accountRef",
+        "balance",
+        "extendedProperties",
+        "accountHolders"
+      ]
+    },
+    "PlacementAccountHolderModel": {
+      "type": "object",
+      "properties": {
+        "outSourcerAccountHolderId": {
+          "type": "string"
+        },
+        "accountHolderRef": {
+          "type": "string"
+        },
+        "nationalId": {
+          "type": "string"
+        },
+        "firstName": {
+          "type": "string"
+        },
+        "middleName": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lastName": {
+          "type": "string"
+        },
+        "suffix": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dateOfBirth": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "emails": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Email"
+          }
+        },
+        "phones": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Phone"
+          }
+        },
+        "addresses": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Address"
+          }
+        },
+        "employer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "languageSpoken": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isResponsible": {
+          "type": "boolean"
+        },
+        "extendedProperties": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/AccountHolderExtendedProperties"
+          }
+        }
+      },
+      "required": [
+        "outSourcerAccountHolderId",
+        "accountHolderRef",
+        "nationalId",
+        "firstName",
+        "lastName",
+        "dateOfBirth",
+        "emails",
+        "phones",
+        "addresses",
+        "isResponsible",
+        "extendedProperties"
+      ]
+    },
+    "Email": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "format": "email"
+        },
+        "hasConsent": {
+          "type": "boolean"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "email",
+        "hasConsent",
+        "type"
+      ]
+    },
+    "Phone": {
+      "type": "object",
+      "properties": {
+        "phoneNumber": {
+          "$ref": "#/definitions/PhoneNumber"
+        },
+        "type": {
+          "type": "string"
+        },
+        "hasContactConsent": {
+          "type": "boolean"
+        },
+        "hasDialerConsent": {
+          "type": "boolean"
+        },
+        "hasSMSConsent": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "phoneNumber",
+        "type",
+        "hasContactConsent",
+        "hasDialerConsent",
+        "hasSMSConsent"
+      ]
+    },
+    "PhoneNumber": {
+      "type": "object",
+      "properties": {
+        "countryCode": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string"
+        },
+        "extension": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "countryCode",
+        "number"
+      ]
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "minItems": 1
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "street",
+        "city",
+        "state",
+        "postalCode",
+        "country",
+        "type"
+      ]
+    },
+    "Balance": {
+      "type": "object",
+      "properties": {
+        "principal": {
+          "type": "integer"
+        },
+        "interest": {
+          "type": "integer"
+        },
+        "fees": {
+          "type": "integer"
+        },
+        "costs": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "principal",
+        "interest",
+        "fees",
+        "costs"
+      ],
+      "additionalProperties": {
+        "type": "integer"
+      }
+    },
+    "AccountExtendedProperties": {
+      "type": "object",
+      "properties": {
+        "chargeOffDetails": {
+          "type": "object",
+          "properties": {
+            "date": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "date"
+          ]
+        },
+        "custom": {
+          "$ref": "#/definitions/CustomExtendedProperties"
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false
+    },
+    "AccountHolderExtendedProperties": {
+      "type": "object",
+      "properties": {
+        "custom": {
+          "$ref": "#/definitions/CustomExtendedProperties"
+        }
+      },
+      "minProperties": 1,
+      "maxProperties": 1,
+      "additionalProperties": false
+    },
+    "CustomExtendedProperties": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "$ref": "#/definitions/PropertyBag"
+      }
+    },
+    "PropertyBag": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}
