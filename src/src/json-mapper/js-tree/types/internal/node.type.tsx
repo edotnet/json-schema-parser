@@ -2,15 +2,15 @@ import React, { ReactElement } from 'react';
 import { Type, Ref } from '../index';
 import { Base } from './base.type';
 import { Meta, Schema } from './types';
-import { iDrawing } from './iDrawing';
+import { iDrawing, RenderContext } from './iDrawing';
 import Expander from './render/expander';
 
 export class NodeWrapper implements iDrawing {
   node: Node | null = null;
   $schema: Schema | null = null;
 
-  render(): ReactElement {
-    return this.node?.render()!;
+  render(context: RenderContext): ReactElement {
+    return this.node?.render(context)!;
   }
 }
 
@@ -53,9 +53,9 @@ export class Node extends Base implements iDrawing {
     return node;
   }
 
-  render(): ReactElement {
+  render(context: RenderContext): ReactElement {
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={false} name={this.$name}>
+      <Expander node={this} type={this.getTypeStr()} expandable={false} name={this.$name} context={context}>
       </Expander>
     );
   };

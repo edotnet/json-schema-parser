@@ -3,6 +3,7 @@ import { Node } from "../node.type";
 import { createNode, typeCheck } from "./factory.node";
 import { Meta } from "../types";
 import Expander from '../render/expander';
+import { RenderContext } from '../iDrawing';
 
 export class ObjectNode extends Node {
   _properties: Map<String, Node> | undefined;
@@ -43,12 +44,12 @@ export class ObjectNode extends Node {
     return null;
   }
 
-  render(): ReactElement {
+  render(context: RenderContext): ReactElement {
     const renders: any[] = [];
-    this._properties?.forEach((value: Node) => renders.push(value.render()));
+    this._properties?.forEach((value: Node) => renders.push(value.render(context)));
 
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={!!this.$name} name={this.$name}>
+      <Expander node={this} type={this.getTypeStr()} expandable={!!this.$name} name={this.$name} context={context}>
           {renders.map(q => q)}
       </Expander>
     );

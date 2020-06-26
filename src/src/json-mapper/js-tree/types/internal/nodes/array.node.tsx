@@ -3,6 +3,7 @@ import { Node } from '../node.type'
 import { createNode, typeCheck } from './factory.node';
 import { Meta } from '../types';
 import Expander from '../render/expander';
+import { RenderContext } from '../iDrawing';
 
 export class ArrayNode extends Node {
   _items: Node | null = null;
@@ -33,11 +34,10 @@ export class ArrayNode extends Node {
     return `${this.$type}<${this._items?.$type}>`;
   }
 
-  render(): ReactElement {
-
+  render(context: RenderContext): ReactElement {
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={true} name={this.$name}>
-        {this._items?.render()}
+      <Expander node={this} type={this.getTypeStr()} expandable={true} name={this.$name} context={context}>
+        {this._items?.render(context)}
       </Expander>
     );
   };
