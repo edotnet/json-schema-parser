@@ -5,8 +5,8 @@ import Destination from './destination';
 import Payload from './payload';
 import Mappings from './mappings';
 import { Mapping } from './mappings/types';
-import './index.scss';
 import Output from './output';
+import './index.scss';
 
 export interface MappingsPanelProps {
   payload: any;
