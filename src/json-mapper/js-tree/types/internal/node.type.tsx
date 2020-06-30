@@ -16,6 +16,7 @@ export class NodeWrapper implements iDrawing {
 
 export class Node extends Base implements iDrawing {
   static $separator: string = '.'; 
+  public static onExpand: Function | undefined;
 
   /**
    * Node builder functions.
@@ -55,7 +56,7 @@ export class Node extends Base implements iDrawing {
 
   render(context: RenderContext): ReactElement {
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={false} name={this.$name} context={context}>
+      <Expander onExpand={Node.onExpand} node={this} type={this.getTypeStr()} expandable={false} name={this.$name} context={context}>
       </Expander>
     );
   };

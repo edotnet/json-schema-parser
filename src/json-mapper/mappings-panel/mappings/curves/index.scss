@@ -1,0 +1,17 @@
+svg {
+  path {
+    fill: none;
+    stroke: gray;
+  }
+  
+  circle {
+    fill: white;
+    stroke: #aaa;
+    z-index: 5000;
+  }
+}
+
+.mapped span {
+  color: black !important;
+  font-weight: bold;
+}

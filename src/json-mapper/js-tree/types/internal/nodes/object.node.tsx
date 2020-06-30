@@ -49,7 +49,7 @@ export class ObjectNode extends Node {
     this._properties?.forEach((value: Node) => renders.push(value.render(context)));
 
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={!!this.$name} name={this.$name} context={context}>
+      <Expander onExpand={Node.onExpand} node={this} type={this.getTypeStr()} expandable={!!this.$name} name={this.$name} context={context}>
           {renders.map(q => q)}
       </Expander>
     );

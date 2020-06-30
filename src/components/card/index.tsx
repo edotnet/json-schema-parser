@@ -3,11 +3,12 @@ import './index.scss';
 
 export interface CardProps {
   children: any;
+  onScroll: Function | undefined;
 };
 
-function Card({ children }: CardProps): ReactElement {
+function Card({ children, onScroll }: CardProps): ReactElement {
   return (
-    <div className="card">
+    <div className="card" onScroll={() => onScroll!()}>
       <div className="card__content">
         {children}
       </div>

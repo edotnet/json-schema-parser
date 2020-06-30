@@ -4,24 +4,26 @@ import 'codemirror/theme/neat.css';
 import 'codemirror/mode/xml/xml.js';
 import 'codemirror/mode/javascript/javascript.js';
 import 'codemirror/mode/jsx/jsx.js';
-
 import React, { ReactElement } from 'react';
 import { Node } from '../../js-tree/types';
 import { Mapping } from '../mappings/types';
-import {UnControlled as CodeMirror} from 'react-codemirror2'
+import { UnControlled as CodeMirror } from 'react-codemirror2';
+import './index.scss';
+
 export interface OutputProps {
   mappings: Mapping[];
 }
 
 const Output = ({mappings}: OutputProps): ReactElement => {
-  let a = mappingsToJson(mappings) as any;
-  console.log(JSON.stringify(a));
-  for (const key in a) {
-    a = a[key];
+  let json = mappingsToJson(mappings) as any;
+  console.log(JSON.stringify(json));
+
+  for (const key in json) {
+    json = json[key];
   }
   return (
-    <div>
-      <CodeMirror value={JSON.stringify(a, undefined, 2)}
+    <div style={{height: '100%'}}>
+      <CodeMirror className="code-mirror" value={JSON.stringify(json, undefined, 2)}
         options={{
         mode: {name: "javascript", json: true},
         lineNumbers: true,
@@ -31,21 +33,17 @@ const Output = ({mappings}: OutputProps): ReactElement => {
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
         foldOptions: {
           widget: (from: any, to: any) => {
-            debugger
             var count = undefined;
 
-            // Get open / close token
             var startToken = '{', endToken = '}';        
             var prevLine = 'asd';
             if (prevLine.lastIndexOf('[') > prevLine.lastIndexOf('{')) {
               startToken = '['; endToken = ']';
             }
 
-            // Get json content
             var internal = 5;
             var toParse = startToken + internal + endToken;
 
-            // Get key count
             try {
               var parsed = JSON.parse(toParse);
               count = Object.keys(parsed).length;

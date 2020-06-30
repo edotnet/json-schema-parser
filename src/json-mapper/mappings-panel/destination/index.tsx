@@ -4,12 +4,13 @@ import Card from '../../../components/card';
 
 export interface DestinationProps {
   payload: any;
-  onDrop: Function
+  onDrop: Function;
+  onScroll: Function | undefined;
 };
 
-const Destination = ({ payload, onDrop }: DestinationProps) => {
+const Destination = ({ payload, onDrop, onScroll }: DestinationProps) => {
   return (
-    <Card>
+    <Card onScroll={onScroll}>
       <JsTree payload={payload} draggable={false} onDrop={onDrop}></JsTree>
     </Card>
   );

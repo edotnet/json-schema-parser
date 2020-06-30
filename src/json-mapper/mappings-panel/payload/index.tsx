@@ -4,11 +4,12 @@ import Card from '../../../components/card';
 
 export interface PayloadProps {
   payload: any;
+  onScroll: Function | undefined;
 };
 
-const Payload = ({ payload }: PayloadProps): ReactElement => {
+const Payload = ({ payload, onScroll }: PayloadProps): ReactElement => {
   return (
-    <Card>
+    <Card onScroll={onScroll}>
       <JsTree payload={payload} draggable={true}></JsTree>
     </Card>
   );

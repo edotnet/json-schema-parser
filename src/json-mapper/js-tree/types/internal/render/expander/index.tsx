@@ -13,9 +13,10 @@ export interface ExpanderProps {
   node: Node;
   type: String;
   context: RenderContext;
+  onExpand: Function | undefined;
 };
 
-function Expander({ name, expandable, children, node, type, context }: ExpanderProps): ReactElement {
+function Expander({ name, expandable, children, node, type, context, onExpand }: ExpanderProps): ReactElement {
   const [expanded, toggle] = useState(true);
   const dndContent = name &&
     <span>
@@ -23,9 +24,14 @@ function Expander({ name, expandable, children, node, type, context }: ExpanderP
       <span className="type--text">{type}</span>
     </span>;
 
+  const toggleExpand = () => {
+    toggle(!expanded);
+    onExpand!(node);
+  }
+
   return (
     <div className={expandable ? 'expandable' : ''}>
-      <div id={node.$payload} className={`node--title ${expandable ? 'yup' : 'nup'}`} onClick={() => toggle(!expanded)}>
+      <div id={node.$payload} className={`node--title ${expandable ? 'yup' : 'nup'}`} onClick={() => toggleExpand()}>
         <div className="expander--icon">
           {expandable &&
             <img src={expanded ? DownArrow : RightArrow} />

@@ -36,7 +36,7 @@ export class ArrayNode extends Node {
 
   render(context: RenderContext): ReactElement {
     return (
-      <Expander node={this} type={this.getTypeStr()} expandable={true} name={this.$name} context={context}>
+      <Expander onExpand={Node.onExpand} node={this} type={this.getTypeStr()} expandable={true} name={this.$name} context={context}>
         {this._items?.render(context)}
       </Expander>
     );
