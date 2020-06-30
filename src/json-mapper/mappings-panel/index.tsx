@@ -6,6 +6,7 @@ import Payload from './payload';
 import Mappings from './mappings';
 import { Mapping } from './mappings/types';
 import './index.scss';
+import Output from './output';
 
 export interface MappingsPanelProps {
   payload: any;
@@ -26,6 +27,7 @@ const MappingsPanel = ({ payload, destination }: MappingsPanelProps): ReactEleme
         <Mappings mappings={mappings}></Mappings>
         <Destination payload={destination} onDrop={addMapping}></Destination>
       </div>
+        <Output mappings={mappings}></Output>
     </DndProvider>
   );
 };
